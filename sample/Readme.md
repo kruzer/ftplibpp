@@ -16,3 +16,7 @@ DYLD_LIBRARY_PATH=.. ./sample
 ```
 LD_LIBRARY_PATH=.. ./sample
 ```
+#cygwin
+```
+g++ -L.. -o sample sample.o -static ../libftp++.a -lws2_32
+```

@@ -20,8 +20,8 @@ ifeq ($(UNAME), Darwin)
 		LIBS =
 	endif
 endif
-ifeq ($(UNAME), Linux)
-	SOFLAG=soname
+SOFLAG=soname
+ifeq ($(UNAME), MINGW32_NT-10.0-19042)
 	ifndef NOSSL
 		LIBS = -lssl
 	else
@@ -58,7 +58,8 @@ libftp++.a: ftplib.o
 	ar -rcs $@ $<
 
 libftp.so.$(SOVERSION): ftplib.o
-	$(CC) -shared -Wl,-$(SOFLAG),libftp.so.$(SONAME) $(LIBS) -lc -o $@ $<
+	#$(CC) -shared -Wl,-$(SOFLAG),libftp.so.$(SONAME) $(LIBS) -lc -o $@ $<
+	$(CC) -shared -Wl,-$(SOFLAG),libftp.so.$(SONAME) $(LIBS) -o $@ $< -lws2_32
 
 libftp++.so: libftp.so.$(SOVERSION)
 	ln -sf $< libftp.so.$(SONAME)

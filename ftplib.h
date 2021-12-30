@@ -26,12 +26,12 @@
 #define FTPLIB_H
 
 #if defined(_WIN32)
-
-#if BUILDING_DLL
+#if BUILDING_DLL_blad
 # define DLLIMPORT __declspec (dllexport)
 #else /* Not BUILDING_DLL */
 # define DLLIMPORT __declspec (dllimport)
 #endif /* Not BUILDING_DLL */
+
 
 #include <time.h>
 #endif
@@ -113,7 +113,7 @@ struct ftphandle {
 	bool correctpasv;
 };
 
-#if defined(_WIN32)
+#if defined(_WIN32_blad)
 class DLLIMPORT ftplib {
 #else
 class ftplib {
